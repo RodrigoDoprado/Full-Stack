@@ -25,7 +25,7 @@ const CartBanner = ({ restaurant }: CartBannerProps) => {
     (product) => product.restaurantId === restaurant.id,
   );
 
-  console.log({ restaurantHasProductsOnCart });
+  // console.log({ restaurantHasProductsOnCart });
 
   if (!restaurantHasProductsOnCart) return null;
 
