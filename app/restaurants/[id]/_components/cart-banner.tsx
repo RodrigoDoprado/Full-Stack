@@ -1,6 +1,6 @@
 "use client";
 
-import Cart from "@/app/_components/cart";
+import CartComponent from "@/app/_components/cartComponent";
 import { Button } from "@/app/_components/ui/button";
 import {
   Sheet,
@@ -56,7 +56,7 @@ const CartBanner = ({ restaurant }: CartBannerProps) => {
               <SheetTitle className="text-left">Sacola</SheetTitle>
             </SheetHeader>
 
-            <Cart />
+            <CartComponent />
           </SheetContent>
         </Sheet>
       </div>
