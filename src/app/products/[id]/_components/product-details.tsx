@@ -1,9 +1,5 @@
 "use client";
 
-import Cart from "@/app/_components/cart";
-import DeliveryInfo from "@/app/_components/delivery-info";
-import DiscountBadge from "@/app/_components/discount-badge";
-import ProductList from "@/app/_components/product-list";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -21,11 +17,15 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/app/_components/ui/sheet";
-import { CartContext } from "@/app/_context/cart";
+import CartComponent from "@/src/app/_components/cartComponent";
+import DeliveryInfo from "@/src/app/_components/delivery-info";
+import DiscountBadge from "@/src/app/_components/discount-badge";
+import ProductList from "@/src/app/_components/product-list";
+import { CartContext } from "@/src/app/_context/cart";
 import {
-  formatCurrency,
   calculateProductTotalPrice,
-} from "@/app/_helpers/price";
+  formatCurrency,
+} from "@/src/app/_helpers/price";
 import { Prisma } from "@prisma/client";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
@@ -174,7 +174,7 @@ const ProductDetails = ({
             <SheetTitle className="text-left">Sacola</SheetTitle>
           </SheetHeader>
 
-          <Cart />
+          <CartComponent />
         </SheetContent>
       </Sheet>
 

@@ -6,7 +6,6 @@ import { formatCurrency } from "../_helpers/price";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { createOrder } from "../_actions/order";
-
 import { OrderStatus } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import { Loader2 } from "lucide-react";
@@ -28,7 +27,7 @@ interface CartProps {
   setIsOpen: (isOpen: boolean) => void;
 }
 
-const Cart = ({ setIsOpen }: CartProps) => {
+const CartComponent = ({ setIsOpen }: CartProps) => {
   const router = useRouter();
 
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
@@ -182,4 +181,4 @@ const Cart = ({ setIsOpen }: CartProps) => {
   );
 };
 
-export default Cart;
+export default CartComponent;
