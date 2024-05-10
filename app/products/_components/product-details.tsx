@@ -1,6 +1,6 @@
 "use client";
 
-import CartComponent from "@/app/_components/cartComponent";
+import CartComponent from "@/app/_components/shoppingCar";
 import DeliveryInfo from "@/app/_components/delivery-info";
 import DiscountBadge from "@/app/_components/discount-badge";
 import ProductList from "@/app/_components/product-list";

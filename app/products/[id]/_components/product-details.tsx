@@ -1,9 +1,9 @@
 "use client";
 
-import CartComponent from "@/app/_components/cartComponent";
 import DeliveryInfo from "@/app/_components/delivery-info";
 import DiscountBadge from "@/app/_components/discount-badge";
 import ProductList from "@/app/_components/product-list";
+import ShoppingCar from "@/app/_components/shoppingCar";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -175,7 +175,7 @@ const ProductDetails = ({
             <SheetTitle className="text-left">Sacola</SheetTitle>
           </SheetHeader>
 
-          <CartComponent setIsOpen={setIsCartOpen} />
+          <ShoppingCar setIsOpen={setIsCartOpen} />
         </SheetContent>
       </Sheet>
 

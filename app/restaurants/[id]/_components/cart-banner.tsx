@@ -1,6 +1,6 @@
 "use client";
 
-import CartComponent from "@/app/_components/cartComponent";
+import ShoppingCar from "@/app/_components/shoppingCar";
 import { Button } from "@/app/_components/ui/button";
 import {
   Sheet,
@@ -53,7 +53,7 @@ const CartBanner = ({ restaurant }: CartBannerProps) => {
               <SheetTitle className="text-left">Sacola</SheetTitle>
             </SheetHeader>
 
-            <CartComponent setIsOpen={setIsCartOpen} />
+            <ShoppingCar setIsOpen={setIsCartOpen} />
           </SheetContent>
         </Sheet>
       </div>

@@ -1,14 +1,21 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../_context/cartContext";
 import CartItem from "./cart-item";
-import { Card, CardContent } from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { formatCurrency } from "../_helpers/price";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { createOrder } from "../_actions/order";
 import { OrderStatus } from "@prisma/client";
 import { useSession } from "next-auth/react";
-import { Loader2 } from "lucide-react";
+import { Loader2, ScrollTextIcon } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,15 +27,15 @@ import {
   AlertDialogTitle,
 } from "./ui/alert-dialog";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface CartProps {
   // eslint-disable-next-line no-unused-vars
   setIsOpen: (isOpen: boolean) => void;
 }
 
-const CartComponent = ({ setIsOpen }: CartProps) => {
-  const router = useRouter();
+const ShoppingCar = ({ setIsOpen }: CartProps) => {
+  // const router = useRouter();
 
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
@@ -72,13 +79,30 @@ const CartComponent = ({ setIsOpen }: CartProps) => {
       clearCart();
       setIsOpen(false);
 
-      toast("Pedido finalizado com sucesso!", {
-        description: "Você pode acompanhá-lo na tela dos seus pedidos.",
-        action: {
-          label: "Meus Pedidos",
-          onClick: () => router.push("/my-orders"),
-        },
-      });
+      toast(
+        <Card className="border-none">
+          <CardContent>
+            <CardHeader>
+              <CardTitle>Pedido finalizado com sucesso!</CardTitle>
+              <CardDescription>
+                Você pode acompanhá-lo na tela dos seus pedidos.
+              </CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Button
+                variant="default"
+                className="w-full justify-start space-x-3 rounded-full text-sm font-normal"
+                asChild
+              >
+                <Link href="/my-orders">
+                  <ScrollTextIcon size={16} />
+                  <span className="block">Meus Pedidos</span>
+                </Link>
+              </Button>
+            </CardFooter>
+          </CardContent>
+        </Card>,
+      );
     } catch (error) {
       console.error(error);
     } finally {
@@ -181,4 +205,4 @@ const CartComponent = ({ setIsOpen }: CartProps) => {
   );
 };
 
-export default CartComponent;
+export default ShoppingCar;
