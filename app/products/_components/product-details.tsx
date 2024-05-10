@@ -21,7 +21,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/app/_components/ui/sheet";
-import { CartContext } from "@/app/_context/cart";
+import { CartContext } from "@/app/_context/cartContext";
 import {
   formatCurrency,
   calculateProductTotalPrice,

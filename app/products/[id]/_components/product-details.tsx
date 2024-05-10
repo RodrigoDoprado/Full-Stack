@@ -21,7 +21,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/app/_components/ui/sheet";
-import { CartContext } from "@/app/_context/cart";
+import { CartContext } from "@/app/_context/cartContext";
 import {
   formatCurrency,
   calculateProductTotalPrice,
@@ -56,14 +56,14 @@ const ProductDetails = ({
   const { addProductToCart, products } = useContext(CartContext);
 
   const addToCart = ({ emptyCart }: { emptyCart?: boolean }) => {
-    addProductToCart({ product, quantity, emptyCart });
+    addProductToCart({ product: { ...product, quantity }, emptyCart });
     setIsCartOpen(true);
   };
 
   const handleAddToCartClick = () => {
     // VERIFICAR SE HÁ ALGUM PRODUTO DE OUTRO RESTAURANTE NO CARRINHO
     const hasDifferentRestaurantProduct = products.some(
-      (cartProduct: any) => cartProduct.restaurantId !== product.restaurantId,
+      (cartProduct) => cartProduct.restaurantId !== product.restaurantId,
     );
 
     // SE HOUVER, ABRIR UM AVISO
@@ -95,6 +95,7 @@ const ProductDetails = ({
               src={product.restaurant.imageUrl}
               alt={product.restaurant.name}
               fill
+              sizes="100%"
               className="rounded-full object-cover"
             />
           </div>
@@ -174,7 +175,7 @@ const ProductDetails = ({
             <SheetTitle className="text-left">Sacola</SheetTitle>
           </SheetHeader>
 
-          <CartComponent />
+          <CartComponent setIsOpen={setIsCartOpen} />
         </SheetContent>
       </Sheet>
 

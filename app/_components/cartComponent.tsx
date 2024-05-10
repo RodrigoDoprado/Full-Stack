@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { CartContext } from "../_context/cart";
+import { CartContext } from "../_context/cartContext";
 import CartItem from "./cart-item";
 import { Card, CardContent } from "./ui/card";
 import { formatCurrency } from "../_helpers/price";

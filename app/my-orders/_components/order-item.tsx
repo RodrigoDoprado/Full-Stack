@@ -2,7 +2,7 @@
 
 import { Button } from "@/app/_components/ui/button";
 import { Separator } from "@/app/_components/ui/separator";
-import { CartContext } from "@/app/_context/cart";
+import { CartContext } from "@/app/_context/cartContext";
 import { formatCurrency } from "@/app/_helpers/price";
 import { OrderStatus, Prisma } from "@prisma/client";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
