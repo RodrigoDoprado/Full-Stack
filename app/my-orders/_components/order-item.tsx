@@ -10,7 +10,7 @@ import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
-import { Card, CardContent } from "../../_components/ui/card";
+import { Card, CardContent, CardTitle } from "../../_components/ui/card";
 
 interface OrderItemProps {
   order: Prisma.OrderGetPayload<{
@@ -59,18 +59,33 @@ const OrderItem = ({ order }: OrderItemProps) => {
     router.push(`/restaurants/${order.restaurantId}`);
   };
   return (
-    <Card>
+    <Card className="">
       <CardContent className="p-5">
-        <div
-          className={`w-fit rounded-full bg-[#EEEEEE] px-2 py-1 text-muted-foreground ${order.status !== "COMPLETED" && "bg-green-500 text-white"}`}
-        >
-          <span className="block text-xs font-semibold">
-            {getOrderStatusLabel(order.status)}
-          </span>
+        <div className="flex items-center justify-between">
+          <div
+            className={`w-fit rounded-full bg-[#EEEEEE] px-2 py-1 text-muted-foreground ${order.status !== "COMPLETED" && "bg-green-500 text-white"}`}
+          >
+            <span className="block text-xs font-semibold">
+              {getOrderStatusLabel(order.status)}
+            </span>
+          </div>
+          <Button
+            variant="link"
+            size="sm"
+            className="text-xs text-black"
+            asChild
+          >
+            <Link href={`/restaurants/${order.restaurantId}`}>
+              <p className="flex">
+                Detalhes
+                <ChevronRightIcon className="h-4 w-4" />
+              </p>
+            </Link>
+          </Button>
         </div>
 
-        <div className="flex items-center justify-between pt-3">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between">
+          <CardTitle className="flex items-center gap-2">
             <Avatar className="h-6 w-6">
               <AvatarImage src={order.restaurant.imageUrl} />
             </Avatar>
@@ -78,16 +93,19 @@ const OrderItem = ({ order }: OrderItemProps) => {
             <span className="text-sm font-semibold">
               {order.restaurant.name}
             </span>
-          </div>
+          </CardTitle>
 
           <Button
             variant="link"
-            size="icon"
-            className="h-5 w-5 text-black"
+            size="sm"
+            className="text-xs text-black"
             asChild
           >
             <Link href={`/restaurants/${order.restaurantId}`}>
-              <ChevronRightIcon />
+              <p className="flex">
+                Restaurante
+                <ChevronRightIcon className="h-4 w-4" />
+              </p>
             </Link>
           </Button>
         </div>
