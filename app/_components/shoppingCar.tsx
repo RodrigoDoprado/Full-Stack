@@ -160,15 +160,20 @@ const ShoppingCar = ({ setIsOpen }: CartProps) => {
                 </CardContent>
               </Card>
             </div>
-
-            {/* FINALIZAR PEDIDO */}
-            <Button
-              className="mt-6 w-full"
-              onClick={() => setIsConfirmDialogOpen(true)}
-              disabled={isSubmitLoading}
-            >
-              Finalizar pedido
-            </Button>
+            {data?.user ? (
+              <>
+                {/* FINALIZAR PEDIDO */}
+                <Button
+                  className="mt-6 w-full"
+                  onClick={() => setIsConfirmDialogOpen(true)}
+                  disabled={isSubmitLoading}
+                >
+                  Finalizar pedido
+                </Button>
+              </>
+            ) : (
+              <>Faça o Login</>
+            )}
           </>
         ) : (
           <h2 className="text-left font-medium">Sua sacola está vazia.</h2>
